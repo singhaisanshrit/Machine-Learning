@@ -1,7 +1,5 @@
 function [ U, V ] = myRecommender( rateMatrix, lowRank ) 
 % Please type your name here:
-    name = 'Song, Le';
-    disp(name); % Do not delete this line.
     % Parameters
     maxIter = 1500; % Choose your own.
     learningRate = 0.0001; % Choose your own.
