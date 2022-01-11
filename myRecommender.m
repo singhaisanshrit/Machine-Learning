@@ -1,0 +1,28 @@
+function [ U, V ] = myRecommender( rateMatrix, lowRank ) 
+% Please type your name here:
+    name = 'Song, Le';
+    disp(name); % Do not delete this line.
+    % Parameters
+    maxIter = 1500; % Choose your own.
+    learningRate = 0.0001; % Choose your own.
+    regularizer = 0.01; % Choose your own.
+    mu =  learningRate;
+    lamda = regularizer;
+    % Random initialization:
+    [n1, n2] = size(rateMatrix);
+    b = size(lowRank);
+   
+    U = rand(n1, lowRank) / lowRank;
+    V = rand(n2, lowRank) / lowRank;
+     M = rateMatrix;
+    % Gradient Descent
+for iter = 1:maxIter
+    prod = U*V';
+    prod(M<=0) = 0; 
+    U = U + (2* (mu *(M - prod))*V) - (2*mu*lamda*U);
+    V = V + (2* (mu *(M - prod))'*U) - (2*mu*lamda*V);
+    tempu = U;
+    tempv = V;
+end
+end
+  
